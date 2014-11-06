@@ -2,7 +2,7 @@ var main = {
   
     preload: function() {
         game.stage.backgroundColor = '#E0FF05';	  	
-        game.load.image('cat', 'cat.jpg');
+        game.load.image('cat', 'cat.png');
         game.load.image('ground', 'ground.png');
     },
 
