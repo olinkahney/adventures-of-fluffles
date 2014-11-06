@@ -1,7 +1,7 @@
 var main = {
   
     preload: function() {
-        game.load.image('cat', 'cat.jpg');
+        game.load.image('cat', 'cat.png');
         game.load.image('ground', 'ground.png');
         game.load.image('background', 'background.jpg');
     },
