@@ -16,10 +16,11 @@ var main = {
         
         this.ground = game.add.sprite(0,500, 'ground');
         
+        game.physics.arcade.enable(this.ground);
 
     
     var space = 
-    game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+    game.input.keyboard.addKey(Phaser.Keyboard.UP);
         space.onDown.add(this.jump, this);
         
     
