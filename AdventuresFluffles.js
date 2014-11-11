@@ -21,6 +21,10 @@ var main = {
     var up = game.input.keyboard.addKey(Phaser.Keyboard.UP);
         up.onDown.add(this.jump, this);
         
+        
+        var down = game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
+        down.onDown.add(this.falldown, this);
+        
     var left = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
        left.onDown.add(this.moveleft, this);
         left.onUp.add(this.stopmoving, this);
@@ -55,6 +59,9 @@ var main = {
         
         console.log(this.player.position)
     },
+  falldown: function() {
+        this.player.body.velocity.y = 250;
+  },
 };
 
 var game = new Phaser.Game(800, 600, Phaser.AUTO, '', main);
