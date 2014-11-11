@@ -39,4 +39,3 @@ var main = {
 
 var game = new Phaser.Game(800, 600, Phaser.AUTO, '', main);
 game.state.start("default")
-//lol
