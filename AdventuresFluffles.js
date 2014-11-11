@@ -1,15 +1,14 @@
 var main = {
   
     preload: function() {
-        game.stage.backgroundColor = '#E0FF05';
         game.load.image('cat', 'cat.png');
         game.load.image('ground', 'ground.png');
-        
+        game.load.image('background', 'background.jpg');
     },
 
     create: function() { 
         game.physics.startSystem(Phaser.Physics.ARCADE);
-        
+        game.add.sprite(0,0, 'background') 
         this.player = game.add.sprite(100, 245, 'cat');
         game.physics.arcade.enable(this.player);
 
