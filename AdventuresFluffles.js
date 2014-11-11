@@ -12,7 +12,7 @@ var main = {
         this.player = game.add.sprite(100, 245, 'cat');
         game.physics.arcade.enable(this.player);
 
-    this.player.body.gravity.y = 1000;
+    this.player.body.gravity.y = 200;
         
         this.ground = game.add.sprite(0,500, 'ground');
         
