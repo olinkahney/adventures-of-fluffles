@@ -14,16 +14,14 @@ var main = {
 
     this.player.body.gravity.y = 1000;
         
-        this.ground = game.add.group();
-        this.ground.enableBody = true;
-        this.ground.createMultiple(20, 'ground');
+        this.ground = game.add.sprite(0,500, 'ground');
+        
 
     
     var space = 
     game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         space.onDown.add(this.jump, this);
         
-            game.time.events.loop(1500, this.addGround, this);
     
         game.physics.arcade.overlap(this.player, this.ground, this.restartGame, null, this);
     },
@@ -32,15 +30,7 @@ var main = {
         this.player.body.velocity.y = -250;
     },
     
-    addGround: function() {  
-        var ground = this.ground.getFirstDead();
-        ground.reset(800,400);
-        ground.body.velocity.x = -200;
-        ground.checkWorldBounds = true
-        ground.outofBoundKill = true
-
-    },
-
+    
     restartGame: function() {
         game.state.start('default');    
     },
