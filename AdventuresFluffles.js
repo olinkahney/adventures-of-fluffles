@@ -15,6 +15,8 @@ var main = {
        
         this.player.body.gravity.y = 200;
         
+        this.jumpcount = 0;
+        
         this.ground = game.add.sprite(0,500, 'ground');
         game.physics.arcade.enable(this.ground);  
         this.ground.body.immovable = true;
@@ -38,7 +40,10 @@ var main = {
     },
   
     jump: function() {
-        this.player.body.velocity.y = -225;
+        if(this.jumpcount < 2) {
+            this.player.body.velocity.y = -225;
+            this.jumpcount += 1;
+        }
     },
     
     moveleft: function() {
@@ -53,9 +58,13 @@ var main = {
         this.player.body.velocity.x = 0;
     },
     
+     resetjumpcount: function() {
+        this.jumpcount = 0;
+    },
     
     update: function() {
         game.physics.arcade.collide(this.player, this.ground);
+        game.physics.overlap(this.player, this.ground, this.resetjumpcount, this);
         
         console.log(this.player.position)
     },
