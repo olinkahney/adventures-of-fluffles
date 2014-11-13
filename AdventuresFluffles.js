@@ -36,7 +36,7 @@ var main = {
         right.onUp.add(this.stopmoving, this);
         
     
-    game.physics.arcade.overlap(this.player, this.ground, this.restartGame,           null, this);
+
     },
   
     jump: function() {
@@ -60,13 +60,11 @@ var main = {
     
      resetjumpcount: function() {
         this.jumpcount = 0;
+         
     },
     
     update: function() {
-        game.physics.arcade.collide(this.player, this.ground);
-        game.physics.overlap(this.player, this.ground, this.resetjumpcount, this);
-        
-        console.log(this.player.position)
+        game.physics.arcade.collide(this.player, this.ground, this.resetjumpcount, null, this);
     },
   falldown: function() {
         this.player.body.velocity.y = 250;
