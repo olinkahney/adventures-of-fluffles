@@ -5,6 +5,7 @@ var main = {
         game.load.image('ground', 'ground.png');
         game.load.image('background', 'background.jpg');
     },
+    
 
     create: function() { 
         game.physics.startSystem(Phaser.Physics.ARCADE);
