@@ -61,6 +61,10 @@ var main = {
         var right = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
         right.onDown.add(this.moveright, this);
         right.onUp.add(this.stopmoving, this);
+        
+        var space =             game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+        space.onDown.add(this.shootBullet, this);
+    
     },
     
     shootBullet: function() {
@@ -77,10 +81,19 @@ var main = {
         bullet.checkWorldBounds = true;
         bullet.outOfBoundsKill = true;
 
-        bullet.reset(this.player.x + 75, this.player.y + 30);
+        bullet.body.velocity.y = 0;
+        
+        if (this.player.scale.x === 1){
+            bullet.reset(this.player.x + 25, this.player.y + 32);
 
         bullet.body.velocity.x = this.BULLET_SPEED;
-        bullet.body.velocity.y = 0;
+        } 
+        else {
+            bullet.reset(this.player.x + -25, this.player.y + 32);
+
+        bullet.body.velocity.x = -this.BULLET_SPEED;
+        }
+        
     },
 
     update: function() {
@@ -88,10 +101,7 @@ var main = {
             this.fpsText.setText(this.game.time.fps + ' FPS');
         }
 
-        // Shoot a bullet
-        if (game.input.activePointer.isDown) {
-            this.shootBullet();
-        }
+        
         
         game.physics.arcade.collide(this.player, this.ground, this.resetjumpcount, null, this);
     },
