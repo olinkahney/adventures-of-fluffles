@@ -4,7 +4,7 @@ var main = {
         game.load.image('cat', 'cat.png');                                     
         game.load.image('ground', 'ground.png');
         game.load.image('background', 'background.jpg');
-        game.load.image('bullet', 'giraffe.png')
+        game.load.image('bullet', 'bullet.png')
     },
 
     create: function() {   
@@ -77,7 +77,7 @@ var main = {
         bullet.checkWorldBounds = true;
         bullet.outOfBoundsKill = true;
 
-        bullet.reset(this.player.x, this.player.y);
+        bullet.reset(this.player.x + 75, this.player.y + 30);
 
         bullet.body.velocity.x = this.BULLET_SPEED;
         bullet.body.velocity.y = 0;
