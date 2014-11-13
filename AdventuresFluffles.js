@@ -47,11 +47,11 @@ var main = {
     },
     
     moveleft: function() {
-        this.player.body.velocity.x = -175;
+        this.player.body.velocity.x = -200;
     },
     
      moveright: function() {
-        this.player.body.velocity.x = 175;
+        this.player.body.velocity.x = 200;
     },
     
     stopmoving: function() {
