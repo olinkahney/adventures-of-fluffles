@@ -1,8 +1,7 @@
 var main = {
   
     preload: function() {
-        game.load.image('cat', 'cat.png');
-        game.load.image('ground', 'ground.png');
+        game.load.image('cat', 'cat.png');                                     game.load.image('ground', 'ground.png');
         game.load.image('background', 'background.jpg');
     },
 
@@ -12,7 +11,8 @@ var main = {
         this.player = game.add.sprite(100, 296, 'cat');
         game.physics.arcade.enable(this.player);
         this.player.body.collideWorldBounds = true;
-       
+        this.player.anchor.setTo(0.5, 0)
+        
         this.player.body.gravity.y = 200;
         
         this.jumpcount = 0;
@@ -34,9 +34,6 @@ var main = {
     var right = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
        right.onDown.add(this.moveright, this);
         right.onUp.add(this.stopmoving, this);
-        
-    
-
     },
   
     jump: function() {
@@ -48,10 +45,12 @@ var main = {
     
     moveleft: function() {
         this.player.body.velocity.x = -175;
+        this.player.scale.x = -1
     },
     
      moveright: function() {
         this.player.body.velocity.x = 175;
+         this.player.scale.x = 1
     },
     
     stopmoving: function() {
