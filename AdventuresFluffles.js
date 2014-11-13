@@ -20,8 +20,9 @@ var main = {
         this.player.body.gravity.y = 200;
         
         this.jumpcount = 0;
-        game.add.sprite(500,300, 'duck')
-        
+        this.duck=game.add.sprite(500,230, 'duck')
+                game.physics.arcade.enable(this.duck);  
+
         this.ground = game.add.sprite(0,500, 'ground');
         game.physics.arcade.enable(this.ground);  
         this.ground.body.immovable = true;
@@ -39,7 +40,7 @@ var main = {
 
             bullet.anchor.setTo(0.5, 0.5);
 
-            this.game.physics.enable(bullet, Phaser.Physics.ARCADE);
+            this.game.physics.arcade.enable(bullet);
 
             bullet.kill();
 
@@ -106,6 +107,9 @@ var main = {
         
         
         game.physics.arcade.collide(this.player, this.ground, this.resetjumpcount, null, this);
+        
+        if(game.physics.arcade.overlap(this.bulletPool,this.duck)){
+            this.duck.destroy();}
     },
   
     jump: function() {
