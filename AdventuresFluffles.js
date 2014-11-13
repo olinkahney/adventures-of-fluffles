@@ -10,7 +10,7 @@ var main = {
     create: function() {   
         game.physics.startSystem(Phaser.Physics.ARCADE);
         game.add.sprite(0,0, 'background') 
-        this.player = game.add.sprite(100, 296, 'cat');
+        this.player = game.add.sprite(100, 300, 'cat');
         game.physics.arcade.enable(this.player);
         this.player.body.collideWorldBounds = true;
         this.player.anchor.setTo(0.5, 0)
