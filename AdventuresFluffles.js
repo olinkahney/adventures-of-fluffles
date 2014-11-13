@@ -4,7 +4,8 @@ var main = {
         game.load.image('cat', 'cat.png');                                     
         game.load.image('ground', 'ground.png');
         game.load.image('background', 'background.jpg');
-        game.load.image('bullet', 'bullet.png')
+        game.load.image('bullet', 'bullet.png') ;
+        game.load.image('duck' , 'duck.jpg') ; 
     },
 
     create: function() {   
@@ -15,10 +16,11 @@ var main = {
         this.player.body.collideWorldBounds = true;
         this.player.anchor.setTo(0.5, 0)
         
+        
         this.player.body.gravity.y = 200;
         
         this.jumpcount = 0;
-        
+        game.add.sprite(500,300, 'duck')
         
         this.ground = game.add.sprite(0,500, 'ground');
         game.physics.arcade.enable(this.ground);  
