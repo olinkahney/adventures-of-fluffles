@@ -5,7 +5,7 @@ var main = {
         game.load.image('ground', 'ground.png');
         game.load.image('background', 'background.jpg');
         game.load.image('bullet', 'bullet.png') ;
-        game.load.image('duck' , 'duck.jpg') ; 
+        game.load.image('duck' , 'duck.png') ; 
     },
 
     create: function() {   
