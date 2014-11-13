@@ -38,7 +38,7 @@ var main = {
   
     jump: function() {
         if(this.jumpcount < 2) {
-            this.player.body.velocity.y = -225;
+            this.player.body.velocity.y = -240;
             this.jumpcount += 1;
         }
     },
