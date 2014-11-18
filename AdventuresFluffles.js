@@ -47,7 +47,8 @@ var main = {
         game.physics.arcade.enable(this.ground);  
         this.ground.body.immovable = true;
         
-        
+        this.kills = 0;
+        this.killsNeeded = 20;
         this.SHOT_DELAY = 100; 
         this.BULLET_SPEED = 500; 
         this.NUMBER_OF_BULLETS = 20;
@@ -67,7 +68,7 @@ var main = {
         }
         
         this.game.time.advancedTiming = true;
-        this.fpsText = this.game.add.text(
+        this.killText = this.game.add.text(
             20, 20, '', { font: '16px Arial', fill: '#ffffff' }
         );
 
@@ -121,9 +122,7 @@ var main = {
     
     
     update: function() {
-        if (game.time.fps !== 0) {
-            this.fpsText.setText(this.game.time.fps + ' FPS');
-        }
+        this.killText.setText(this.kills + ' kills ' + this.killsNeeded + ' kills Needed');
 
         game.physics.arcade.collide(this.player, this.ground, this.resetjumpcount, null, this);
         
