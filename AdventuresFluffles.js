@@ -6,6 +6,7 @@ var main = {
         game.load.image('background', 'background.jpg');
         game.load.image('bullet', 'bullet.png') ;
         game.load.image('duck' , 'duck.png') ; 
+        game.load.image('explosion','explosion.gif');
     },
 
     create: function() {   
@@ -141,6 +142,7 @@ var main = {
     falldown: function() {
         this.player.body.velocity.y = 250;
     },
+
 };
 
 var game = new Phaser.Game(800, 600, Phaser.AUTO, '', main);
