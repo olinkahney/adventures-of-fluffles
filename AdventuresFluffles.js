@@ -20,7 +20,7 @@ var main = {
         this.player.body.gravity.y = 200;
         
         this.jumpcount = 0;
-        this.duck=game.add.sprite(500,230, 'duck')
+        this.duck=game.add.sprite(500,300, 'duck')
                 game.physics.arcade.enable(this.duck);  
 
         this.ground = game.add.sprite(0,500, 'ground');
