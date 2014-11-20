@@ -7,23 +7,7 @@ var main = {
         game.load.image('bullet', 'bullet.png') ;
         game.load.image('duck' , 'duck1.png') ; 
         game.load.image('explosion', 'explosion.gif')
-    },
-    
-    addDuck: function() {
-        this.Duck.prototype.constructor = function(game, x, y) {
-        Phaser.Sprite.call(this, game, x, y, 'duck');
-
-        this.anchor.setTo(0.5, 0.5);
-
-        game.physics.enable(this, Phaser.Physics.ARCADE);
-
-        this.SPEED = 250;
-        this.TURN_RATE = 5;
-        };
-        
-        this.Duck.prototype.update = function () {
-            
-        };
+        game.load.image('giraffe', 'giraffe1.png')
     },
 
     create: function() {   
@@ -41,6 +25,13 @@ var main = {
         this.ducks.createMultiple(20, 'duck'); 
         game.time.events.loop(1000,this.addDuck, this);
         this.jumpcount = 0;
+        
+        this.giraffes= game.add.group();
+        this.giraffes.enableBody = true;
+        this.giraffes.createMultiple(20, 'giraffe'); 
+        game.time.events.loop(1000,this.addGiraffe, this);
+        this.jumpcount = 0;
+ 
  
 
         this.ground = game.add.sprite(0,500, 'ground');
@@ -126,11 +117,20 @@ var main = {
 
         game.physics.arcade.collide(this.player, this.ground, this.resetjumpcount, null, this);
         
-    game.physics.arcade.overlap(this.bulletPool,this.ducks, this.killDuck, null, this);
+        game.physics.arcade.overlap(this.bulletPool,this.ducks, this.killDuck, null, this);
+        
+        game.physics.arcade.overlap(this.bulletPool,this.giraffes, this.killGiraffe, null, this);
     },
     
     killDuck: function(bullet, duck){
         duck.reset(-6646446666666666, - 12345678910);
+        bullet.reset(-1111112211331142, -6364454577757677677477);
+        this.kills = this.kills+1; 
+    },
+    
+    
+    killGiraffe: function(bullet, giraffe){
+        giraffe.reset(-6646446666666666, - 12345678910);
         bullet.reset(-1111112211331142, -6364454577757677677477);
         this.kills = this.kills+1; 
     },
@@ -169,10 +169,21 @@ var main = {
     addDuck: function() {  
 		var duck = this.ducks.getFirstDead();
         
+        duck.anchor.setTo(0.5, 0.5);
         duck.reset(800, 300);        
         duck.body.velocity.x = -200;
         duck.checkWorldBounds = true;
         duck.outOfBoundsKill = true;
+    },
+    
+    addGiraffe: function() {  
+		var giraffe = this.giraffes.getFirstDead();
+        
+        giraffe.anchor.setTo(0.5, 0.5);
+        giraffe.reset(-100, 300);        
+        giraffe.body.velocity.x = 100;
+        giraffe.checkWorldBounds = true;
+        giraffe.outOfBoundsKill = true;
     }
 };
 
