@@ -1,11 +1,11 @@
 var main = {
 
     preload: function() {
-        game.load.image('cat1', 'cat.png');                                     
+        game.load.image('cat', 'cat1.png');                                     
         game.load.image('ground', 'ground.png');
         game.load.image('background', 'background.jpg');
         game.load.image('bullet', 'bullet.png') ;
-        game.load.image('duck1' , 'duck.png') ; 
+        game.load.image('duck' , 'duck1.png') ; 
         game.load.image('explosion', 'explosion.gif')
     },
     
