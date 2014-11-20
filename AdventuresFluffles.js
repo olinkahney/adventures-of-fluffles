@@ -68,7 +68,7 @@ var main = {
         
         this.game.time.advancedTiming = true;
         this.fpsText = this.game.add.text(
-            20, 20, '', { font: '16px Arial', fill: '#ffffff' }
+            20, 20, '', { font: '250px Impact', fill: '#ffffff' }
         );
 
         var up = game.input.keyboard.addKey(Phaser.Keyboard.UP);
@@ -122,7 +122,7 @@ var main = {
     
     update: function() {
         if (game.time.fps !== 0) {
-            this.fpsText.setText(this.game.time.fps + ' FPS');
+            this.fpsText.setText(this.game.time.fps + ' REKT');
         }
 
         game.physics.arcade.collide(this.player, this.ground, this.resetjumpcount, null, this);
