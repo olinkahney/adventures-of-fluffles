@@ -47,7 +47,8 @@ var main = {
         game.physics.arcade.enable(this.ground);  
         this.ground.body.immovable = true;
         
-        
+        this.kills = 0;
+        this.killsNeeded = 20;
         this.SHOT_DELAY = 100; 
         this.BULLET_SPEED = 500; 
         this.NUMBER_OF_BULLETS = 20;
@@ -67,8 +68,8 @@ var main = {
         }
         
         this.game.time.advancedTiming = true;
-        this.fpsText = this.game.add.text(
-            20, 20, '', { font: '250px Impact', fill: '#ffffff' }
+        this.killText = this.game.add.text(
+            20, 20, '', { font: '20px Impact', fill: '#ffffff' }
         );
 
         var up = game.input.keyboard.addKey(Phaser.Keyboard.UP);
@@ -121,9 +122,7 @@ var main = {
     
     
     update: function() {
-        if (game.time.fps !== 0) {
-            this.fpsText.setText(this.game.time.fps + ' REKT');
-        }
+        this.killText.setText(this.kills + ' kills ' + this.killsNeeded + ' kills Needed');
 
         game.physics.arcade.collide(this.player, this.ground, this.resetjumpcount, null, this);
         
@@ -133,6 +132,7 @@ var main = {
     killDuck: function(bullet, duck){
         duck.reset(-6646446666666666, - 12345678910);
         bullet.reset(-1111112211331142, -6364454577757677677477);
+        this.kills = this.kills+1; 
     },
   
     jump: function() {
