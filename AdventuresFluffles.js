@@ -8,11 +8,13 @@ var main = {
         game.load.image('duck' , 'duck1.png') ; 
         game.load.image('explosion', 'explosion.gif')
         game.load.image('giraffe', 'giraffe1.png')
+        game.load.image('platform', 'platform.png')
     },
 
     create: function() {   
         game.physics.startSystem(Phaser.Physics.ARCADE);
         game.add.sprite(0,0, 'background') 
+        game.add.sprite(-300, -100, 'platform')
         this.player = game.add.sprite(100, 300, 'cat');
         game.physics.arcade.enable(this.player);
         this.player.body.collideWorldBounds = true;
@@ -37,6 +39,11 @@ var main = {
         this.ground = game.add.sprite(0,500, 'ground');
         game.physics.arcade.enable(this.ground);  
         this.ground.body.immovable = true;
+        
+        this.platform = game.add.sprite(900, 300, 'platform');
+        game.physics.arcade.enable(this.platform);  
+        this.platform.body.immovable = true;
+        this.platform.body.velocity.x = -150
         
         this.kills = 0;
         this.killsNeeded = 20;
@@ -116,6 +123,8 @@ var main = {
         this.killText.setText(this.kills + ' kills ' + this.killsNeeded + ' kills Needed');
 
         game.physics.arcade.collide(this.player, this.ground, this.resetjumpcount, null, this);
+        
+         game.physics.arcade.collide(this.player, this.platform, this.resetjumpcount, null, this);
         
         game.physics.arcade.overlap(this.bulletPool,this.ducks, this.killDuck, null, this);
         
