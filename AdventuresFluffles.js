@@ -69,7 +69,7 @@ var main = {
         
         this.game.time.advancedTiming = true;
         this.killText = this.game.add.text(
-            20, 20, '', { font: '16px Arial', fill: '#ffffff' }
+            20, 20, '', { font: '20px Impact', fill: '#ffffff' }
         );
 
         var up = game.input.keyboard.addKey(Phaser.Keyboard.UP);
@@ -132,7 +132,7 @@ var main = {
     killDuck: function(bullet, duck){
         duck.reset(-6646446666666666, - 12345678910);
         bullet.reset(-1111112211331142, -6364454577757677677477);
-        this.kills = this.kills+1;
+        this.kills = this.kills+1; 
     },
   
     jump: function() {
