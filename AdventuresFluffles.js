@@ -106,7 +106,7 @@ var main = {
         bullet.body.velocity.y = 0;
         
         if (this.player.scale.x === 1){
-            bullet.reset(this.player.x + 25, this.player.y + 32);
+            bullet.reset(this.player.x + 15, this.player.y + 20);
 
         bullet.body.velocity.x = this.BULLET_SPEED;
         } 
