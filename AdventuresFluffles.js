@@ -35,7 +35,7 @@ var main = {
         this.giraffes= game.add.group();
         this.giraffes.enableBody = true;
         this.giraffes.createMultiple(20, 'giraffe'); 
-        game.time.events.loop(2000,this.addGiraffe, this);
+        game.time.events.loop(5000,this.addGiraffe, this);
         this.jumpcount = 0;
 
         this.ground = game.add.sprite(0,500, 'ground');
@@ -138,6 +138,7 @@ var main = {
     update: function() {
         this.killText.setText(this.kills + ' kills ');
         this.killText.position.x = game.camera.position.x -375
+        this.healthText.position.x = game.camera.position.x -310
         
         this.healthText.setText(this.health + ' HP')
         this.healthText.position.x = game.camera.position.x -310
@@ -220,7 +221,7 @@ var main = {
         if (duck === null) return;
         
         duck.anchor.setTo(0.5, 0.5);
-        duck.reset(game.camera.position.x+400, 300);        
+        duck.reset(game.camera.position.x+400, 300);
         duck.body.velocity.x = -100;
         duck.checkWorldBounds = true;
         duck.outOfBoundsKill = true;
