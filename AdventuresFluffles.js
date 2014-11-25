@@ -5,9 +5,9 @@ var main = {
         game.load.image('ground', 'ground.png');
         game.load.image('background', 'background.jpg');
         game.load.image('bullet', 'bullet.png') ;
-        game.load.image('duck' , 'duck1.png') ; 
+//        game.load.image('duck' , 'duck1.png') ; 
         game.load.image('explosion', 'explosion.gif')
-        game.load.image('giraffe', 'giraffe1.png')
+//        game.load.image('giraffe', 'giraffe1.png')
         game.load.image('platform', 'platform.png')
     },
 
@@ -209,27 +209,27 @@ var main = {
     },
     
     
-    addDuck: function() {  
-		var duck = this.ducks.getFirstDead();
-        if (duck === null) return;
-        
-        duck.anchor.setTo(0.5, 0.5);
-        duck.reset(800, 300);        
-        duck.body.velocity.x = -100;
-        duck.checkWorldBounds = true;
-        duck.outOfBoundsKill = true;
-    },
-    
-    addGiraffe: function() {  
-		var giraffe = this.giraffes.getFirstDead();
-        if (giraffe === null) return;
-        
-        giraffe.anchor.setTo(0.5, 0.5);
-        giraffe.reset(-100, 300);        
-        giraffe.body.velocity.x = 100;
-        giraffe.checkWorldBounds = true;
-        giraffe.outOfBoundsKill = true;
-    }
+//    addDuck: function() {  
+//		var duck = this.ducks.getFirstDead();
+//        if (duck === null) return;
+//        
+//        duck.anchor.setTo(0.5, 0.5);
+//        duck.reset(800, 300);        
+//        duck.body.velocity.x = -100;
+//        duck.checkWorldBounds = true;
+//        duck.outOfBoundsKill = true;
+//    },
+//    
+//    addGiraffe: function() {  
+//		var giraffe = this.giraffes.getFirstDead();
+//        if (giraffe === null) return;
+//        
+//        giraffe.anchor.setTo(0.5, 0.5);
+//        giraffe.reset(-100, 300);        
+//        giraffe.body.velocity.x = 100;
+//        giraffe.checkWorldBounds = true;
+//        giraffe.outOfBoundsKill = true;
+//    }
 };
 
 var game = new Phaser.Game(800, 600, Phaser.AUTO, '', main);
