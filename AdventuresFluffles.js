@@ -44,7 +44,7 @@ var main = {
         this.ground.body.immovable = true;
         
         this.platforms = [];
-        platform = game.add.sprite(900, 300, 'platform');
+        platform = game.add.sprite(1000, 200, 'platform');
         game.physics.arcade.enable(platform);  
         platform.body.immovable = true;
         this.platforms.push(platform);
@@ -52,7 +52,7 @@ var main = {
         game.physics.arcade.enable(platform);  
         platform.body.immovable = true;
         this.platforms.push(platform);
-        platform = game.add.sprite(1500, 500, 'platform');
+        platform = game.add.sprite(1500, 400, 'platform');
         game.physics.arcade.enable(platform);  
         platform.body.immovable = true;
         this.platforms.push(platform);
