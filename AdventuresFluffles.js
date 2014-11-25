@@ -171,11 +171,17 @@ var main = {
         }
     },
     
-    followPlayer: function(duck){
-        if(duck.position.x<this.player.position.x)
-            duck.body.velocity.x=100;
+    followPlayer: function(animal){
+        if(animal.position.x<this.player.position.x)
+            animal.body.velocity.x=100;
         else
-            duck.body.velocity.x=-100;
+            animal.body.velocity.x=-100;
+        
+        if(animal.position.y<this.player.position.y)
+            animal.body.velocity.y=100;
+        else
+            animal.body.velocity.y=-100;
+        
     },
     
     moveleft: function() {
