@@ -29,13 +29,13 @@ var main = {
         this.ducks= game.add.group();
         this.ducks.enableBody = true;
         this.ducks.createMultiple(20, 'duck'); 
-        game.time.events.loop(1000,this.addDuck, this);
+        game.time.events.loop(5000,this.addDuck, this);
         this.jumpcount = 0;
         
         this.giraffes= game.add.group();
         this.giraffes.enableBody = true;
         this.giraffes.createMultiple(20, 'giraffe'); 
-        game.time.events.loop(1000,this.addGiraffe, this);
+        game.time.events.loop(2000,this.addGiraffe, this);
         this.jumpcount = 0;
 
         this.ground = game.add.sprite(0,500, 'ground');
@@ -221,7 +221,7 @@ var main = {
         if (duck === null) return;
         
         duck.anchor.setTo(0.5, 0.5);
-        duck.reset(800, 300);        
+        duck.reset(game.camera.position.x+400, 300);        
         duck.body.velocity.x = -100;
         duck.checkWorldBounds = true;
         duck.outOfBoundsKill = true;
