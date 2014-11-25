@@ -83,11 +83,9 @@ var main = {
             20, 20, '', { font: '20px Impact', fill: '#ffffff' }
         );
      
-        this.game.time.advancedTiming = true;
         this.healthText = this.game.add.text(90, 20, '', { font: '20px Impact', fill: '#ffffff' }
                                             );
-
-
+        
         var up = game.input.keyboard.addKey(Phaser.Keyboard.UP);
         up.onDown.add(this.jump, this);
         
@@ -142,6 +140,7 @@ var main = {
         this.killText.position.x = game.camera.position.x -375
         
         this.healthText.setText(this.health + ' HP')
+        this.healthText.position.x = game.camera.position.x -310
 
         game.physics.arcade.collide(this.player, this.ground, this.resetjumpcount, null, this);
         
