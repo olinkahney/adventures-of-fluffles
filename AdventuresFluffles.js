@@ -52,7 +52,7 @@ var main = {
         game.physics.arcade.enable(platform);  
         platform.body.immovable = true;
         this.platforms.push(platform);
-        platform = game.add.sprite(1500, 400, 'platform');
+        platform = game.add.sprite(1300, 400, 'platform');
         game.physics.arcade.enable(platform);  
         platform.body.immovable = true;
         this.platforms.push(platform);
