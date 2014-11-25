@@ -152,15 +152,15 @@ var main = {
     },
     
     killDuck: function(bullet, duck){
-        duck.reset(-6646446666666666, - 12345678910);
-        bullet.reset(-1111112211331142, -6364454577757677677477);
+        duck.kill();
+        bullet.kill();
         this.kills = this.kills+1; 
     },
     
     
     killGiraffe: function(bullet, giraffe){
-        giraffe.reset(-6646446666666666, - 12345678910);
-        bullet.reset(-1111112211331142, -6364454577757677677477);
+        giraffe.kill();
+        bullet.kill();
         this.kills = this.kills+1; 
     },
   
