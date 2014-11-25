@@ -161,12 +161,16 @@ var main = {
         game.physics.arcade.overlap(this.bulletPool,this.giraffes, this.killGiraffe, null, this);
          this.giraffes.forEachAlive(this.followPlayer,this);
         game.physics.arcade.overlap(this.bulletPool,this.giraffes, this.killGiraffe, null, this);
+        game.physics.arcade.overlap(this.player,this.giraffes, this.dodamage, null, this);
     },
     
     killDuck: function(bullet, duck){
         duck.kill();
         bullet.kill();
         this.kills = this.kills+1; 
+    },
+     dodamage: function(player, giraffe){
+        this.health= this.health -1 
     },
     
     
