@@ -133,7 +133,8 @@ var main = {
     
     
     update: function() {
-        this.killText.setText(this.kills + ' kills ' + this.killsNeeded + ' kills Needed');
+        this.killText.setText(this.kills + ' kills ');
+        this.killText.position.x = game.camera.position.x -375
 
         game.physics.arcade.collide(this.player, this.ground, this.resetjumpcount, null, this);
         
