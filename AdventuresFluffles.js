@@ -5,9 +5,9 @@ var main = {
         game.load.image('ground', 'ground.png');
         game.load.image('background', 'background.jpg');
         game.load.image('bullet', 'bullet.png') ;
-//        game.load.image('duck' , 'duck1.png') ; 
+        game.load.image('duck' , 'duck1.png') ; 
         game.load.image('explosion', 'explosion.gif')
-//        game.load.image('giraffe', 'giraffe1.png')
+        game.load.image('giraffe', 'giraffe1.png')
         game.load.image('platform', 'platform.png')
     },
 
@@ -52,14 +52,14 @@ var main = {
         game.physics.arcade.enable(platform);  
         platform.body.immovable = true;
         this.platforms.push(platform);
-        platform = game.add.sprite(1300, 400, 'platform');
+        platform = game.add.sprite(1500, 400, 'platform');
         game.physics.arcade.enable(platform);  
         platform.body.immovable = true;
         this.platforms.push(platform);
         
         
         this.kills = 0;
-        this.killsNeeded = 20;
+        this.health = 100;
         this.SHOT_DELAY = 100; 
         this.BULLET_SPEED = 500; 
         this.NUMBER_OF_BULLETS = 200;
@@ -82,6 +82,11 @@ var main = {
         this.killText = this.game.add.text(
             20, 20, '', { font: '20px Impact', fill: '#ffffff' }
         );
+     
+        this.game.time.advancedTiming = true;
+        this.healthText = this.game.add.text(90, 20, '', { font: '20px Impact', fill: '#ffffff' }
+                                            );
+
 
         var up = game.input.keyboard.addKey(Phaser.Keyboard.UP);
         up.onDown.add(this.jump, this);
@@ -135,6 +140,8 @@ var main = {
     update: function() {
         this.killText.setText(this.kills + ' kills ');
         this.killText.position.x = game.camera.position.x -375
+        
+        this.healthText.setText(this.health + ' HP')
 
         game.physics.arcade.collide(this.player, this.ground, this.resetjumpcount, null, this);
         
@@ -209,27 +216,27 @@ var main = {
     },
     
     
-//    addDuck: function() {  
-//		var duck = this.ducks.getFirstDead();
-//        if (duck === null) return;
-//        
-//        duck.anchor.setTo(0.5, 0.5);
-//        duck.reset(800, 300);        
-//        duck.body.velocity.x = -100;
-//        duck.checkWorldBounds = true;
-//        duck.outOfBoundsKill = true;
-//    },
-//    
-//    addGiraffe: function() {  
-//		var giraffe = this.giraffes.getFirstDead();
-//        if (giraffe === null) return;
-//        
-//        giraffe.anchor.setTo(0.5, 0.5);
-//        giraffe.reset(-100, 300);        
-//        giraffe.body.velocity.x = 100;
-//        giraffe.checkWorldBounds = true;
-//        giraffe.outOfBoundsKill = true;
-//    }
+    addDuck: function() {  
+		var duck = this.ducks.getFirstDead();
+        if (duck === null) return;
+        
+        duck.anchor.setTo(0.5, 0.5);
+        duck.reset(800, 300);        
+        duck.body.velocity.x = -100;
+        duck.checkWorldBounds = true;
+        duck.outOfBoundsKill = true;
+    },
+    
+    addGiraffe: function() {  
+		var giraffe = this.giraffes.getFirstDead();
+        if (giraffe === null) return;
+        
+        giraffe.anchor.setTo(0.5, 0.5);
+        giraffe.reset(-100, 300);        
+        giraffe.body.velocity.x = 100;
+        giraffe.checkWorldBounds = true;
+        giraffe.outOfBoundsKill = true;
+    }
 };
 
 var game = new Phaser.Game(800, 600, Phaser.AUTO, '', main);
