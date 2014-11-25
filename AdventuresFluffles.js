@@ -13,13 +13,17 @@ var main = {
 
     create: function() {   
         game.physics.startSystem(Phaser.Physics.ARCADE);
-        game.add.sprite(0,0, 'background') 
+        background = game.add.sprite(0,0, 'background')
+        background.fixedToCamera = true
         game.add.sprite(-300, -100, 'platform')
         this.player = game.add.sprite(100, 300, 'cat');
         game.physics.arcade.enable(this.player);
         this.player.body.collideWorldBounds = true;
         this.player.anchor.setTo(0.5, 0)
         
+        game.world.setBounds(0, 0, 1920, 600);
+        game.camera.follow(this.player);
+
         this.player.body.gravity.y = 200;
         
         this.ducks= game.add.group();
@@ -33,17 +37,26 @@ var main = {
         this.giraffes.createMultiple(20, 'giraffe'); 
         game.time.events.loop(1000,this.addGiraffe, this);
         this.jumpcount = 0;
- 
- 
 
         this.ground = game.add.sprite(0,500, 'ground');
+        this.ground.fixedToCamera = true
         game.physics.arcade.enable(this.ground);  
         this.ground.body.immovable = true;
         
-        this.platform = game.add.sprite(900, 300, 'platform');
-        game.physics.arcade.enable(this.platform);  
-        this.platform.body.immovable = true;
-        this.platform.body.velocity.x = -150
+        this.platforms = [];
+        platform = game.add.sprite(900, 300, 'platform');
+        game.physics.arcade.enable(platform);  
+        platform.body.immovable = true;
+        this.platforms.push(platform);
+        platform = game.add.sprite(800, 400, 'platform');
+        game.physics.arcade.enable(platform);  
+        platform.body.immovable = true;
+        this.platforms.push(platform);
+        platform = game.add.sprite(1500, 500, 'platform');
+        game.physics.arcade.enable(platform);  
+        platform.body.immovable = true;
+        this.platforms.push(platform);
+        
         
         this.kills = 0;
         this.killsNeeded = 20;
@@ -124,7 +137,11 @@ var main = {
 
         game.physics.arcade.collide(this.player, this.ground, this.resetjumpcount, null, this);
         
-         game.physics.arcade.collide(this.player, this.platform, this.resetjumpcount, null, this);
+        var i = 0;
+        for (i = 0; i < this.platforms.length; i ++){
+            platform = this.platforms[i];
+         game.physics.arcade.collide(this.player, platform, this.resetjumpcount, null, this);
+        }
         
         game.physics.arcade.overlap(this.bulletPool,this.ducks, this.killDuck, null, this); 
         this.ducks.forEachAlive(this.followPlayer,this); 
@@ -183,6 +200,7 @@ var main = {
     falldown: function() {
         this.player.body.velocity.y = 250;
     },
+    
     
     addDuck: function() {  
 		var duck = this.ducks.getFirstDead();
