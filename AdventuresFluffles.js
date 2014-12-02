@@ -184,16 +184,19 @@ var main = {
     },
     
     followPlayer: function(animal){
-        if(animal.position.x<this.player.position.x)
+        if(animal.position.x<this.player.position.x-25)
             animal.body.velocity.x=100;
-        else
+        else if(animal.position.x>this.player.position.x+25)
             animal.body.velocity.x=-100;
+         else
+             animal.body.velocity.x=0;
         
-        if(animal.position.y<this.player.position.y)
+        if(animal.position.y<this.player.position.y-25)
             animal.body.velocity.y=100;
-        else
+        else if(animal.position.y>this.player.position.y+25)
             animal.body.velocity.y=-100;
-        
+        else
+            animal.body.velocity.y=0;
     },
     
     moveleft: function() {
@@ -245,7 +248,3 @@ var main = {
 
 var game = new Phaser.Game(800, 600, Phaser.AUTO, '', main);
 
-//lol
-//lol
-//lol
-//lol
