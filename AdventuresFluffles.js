@@ -133,7 +133,13 @@ var main = {
         
         var space =             game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         space.onDown.add(this.shootBullet, this);
+        
+        var P = game.input.keyboard.addKey(Phaser.Keyboard.P);
+        P.onDown.add(this.pause, this);
+    },
     
+    pause:function() {
+    game.paused=!game.paused;
     },
     
     shootBullet: function() {
