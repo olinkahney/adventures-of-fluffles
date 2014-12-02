@@ -165,9 +165,12 @@ var main = {
         bullet.kill();
         this.kills = this.kills+1; 
     },
-     dodamage: function(player, giraffe){
+    
+ restartGame: function() {game.state.start('default'); },
+        dodamage: function(player, enemy){
         this.health= this.health -1 
-    },
+        if(this.health== 0) {this.restartGame ()}
+       },
     
     
     killGiraffe: function(bullet, giraffe){
