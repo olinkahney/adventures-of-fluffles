@@ -1,3 +1,34 @@
+var startscreen = {
+
+    preload: function() {
+       
+        game.stage.backgroundColor = '#000000';	  	
+        game.load.image('pressstart1', 'PressStart1.png');
+        game.load.image('pressstart2', 'PressStart2.png');
+
+    },
+
+    create: function() {   
+        
+        background = game.add.sprite(400 - 220,400, 'pressstart1')
+        this.background2 = game.add.sprite(400 - 220,400, 'pressstart2')
+        game.time.events.loop(200,this.blink, this);
+
+        
+        var space =             game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+        space.onDown.add(this.startGame, this);
+    
+    },
+    blink : function(){
+        this.background2.visible = ! this.background2.visible
+    },
+    
+    startGame : function(){
+     game.state.start("main");
+
+    },
+};
+
 var main = {
 
     preload: function() {
@@ -250,7 +281,10 @@ var main = {
     }
 };
 
-var game = new Phaser.Game(800, 600, Phaser.AUTO, '', main);
+var game = new Phaser.Game(800, 600, Phaser.AUTO, '');
+game.state.add("main", main);
+game.state.add("startscreen", startscreen);
+game.state.start("startscreen")
 
 //lol
 //lol
