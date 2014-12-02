@@ -48,17 +48,13 @@ var main = {
         game.physics.arcade.enable(platform);  
         platform.body.immovable = true;
         this.platforms.push(platform);
-        platform.body.checkCollision.down = false;
         platform = game.add.sprite(800, 400, 'platform');
         game.physics.arcade.enable(platform);  
         platform.body.immovable = true;
         this.platforms.push(platform);
-        platform.body.checkCollision.down = false;
         platform = game.add.sprite(1500, 400, 'platform');
-        game.physics.arcade.enable(platform);
+        game.physics.arcade.enable(platform);  
         platform.body.immovable = true;
-        platform.body.checkCollision.down = false;
-
         this.platforms.push(platform);
         
         
@@ -145,7 +141,7 @@ var main = {
         this.healthText.position.x = game.camera.position.x -310
         
         this.healthText.setText(this.health + ' HP')
-        this.healthText.position.x = game.camera.position.x -300
+        this.healthText.position.x = game.camera.position.x -310
 
         game.physics.arcade.collide(this.player, this.ground, this.resetjumpcount, null, this);
         
@@ -249,5 +245,6 @@ var main = {
 
 var game = new Phaser.Game(800, 600, Phaser.AUTO, '', main);
 
+//lol
 //lol
 //lol
