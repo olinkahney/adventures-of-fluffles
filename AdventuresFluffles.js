@@ -41,8 +41,8 @@ var diescreen  = {
     },
 
     create: function() {   
-        game.add.sprite(400 - 200, 300, 'doge');
-        game.add.sprite(400 - 595/2, 100, 'yousuck');
+        game.add.sprite(400 - 344/2, 350, 'doge');
+        game.add.sprite(400 - 555/2, 50, 'yousuck');
         
         var space =             game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         space.onDown.add(this.startGame, this);
