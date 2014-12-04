@@ -35,7 +35,7 @@ var startscreen = {
 var main = {
 
     preload: function() {
-        game.load.image('cat', 'cat1.png');                                     
+        game.load.spritesheet('cat', 'cat_70x120.png', 70, 120);
         game.load.image('ground', 'ground.png');
         game.load.image('background', 'background.jpg');
         game.load.image('bullet', 'bullet.png') ;
@@ -51,6 +51,8 @@ var main = {
         background.fixedToCamera = true
         game.add.sprite(-300, -100, 'platform')
         this.player = game.add.sprite(100, 300, 'cat');
+        this.player.animations.add('asdf');
+        this.player.animations.play('asdf', 7, true);
         game.physics.arcade.enable(this.player);
         this.player.body.collideWorldBounds = true;
         this.player.anchor.setTo(0.5, 0)
@@ -300,4 +302,3 @@ game.state.start("startscreen")
 //lol
 //lol
 //lol
-//Lyle is a beotch
