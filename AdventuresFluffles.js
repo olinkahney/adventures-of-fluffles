@@ -31,6 +31,29 @@ var startscreen = {
 
     },
 };
+var diescreen  = {
+
+    preload: function() {
+       
+        game.stage.backgroundColor = '#000000';	  	
+        game.load.image('doge', 'doge.png');
+        game.load.image('yousuck', 'yousuck.png');
+    },
+
+    create: function() {   
+        game.add.sprite(400 - 200, 300, 'doge');
+        game.add.sprite(400 - 595/2, 100, 'yousuck');
+        
+        var space =             game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+        space.onDown.add(this.startGame, this);
+    
+    },
+    
+    startGame : function(){
+     game.state.start("main");
+
+    },
+};
 
 var main = {
 
@@ -209,10 +232,10 @@ var main = {
         this.kills = this.kills+1; 
     },
     
- restartGame: function() {game.state.start('default'); },
-        dodamage: function(player, enemy){
+ restartGame: function() {game.state.start('diescreen'); },
+dodamage: function(player, enemy){
         this.health= this.health -1 
-        if(this.health== 0) {this.restartGame ()}
+        if(this.health === 0) {this.restartGame ()}
        },
     
     
@@ -295,6 +318,7 @@ var main = {
 var game = new Phaser.Game(800, 600, Phaser.AUTO, '');
 game.state.add("main", main);
 game.state.add("startscreen", startscreen);
+game.state.add("diescreen", diescreen);
 game.state.start("startscreen")
 
 //lol
