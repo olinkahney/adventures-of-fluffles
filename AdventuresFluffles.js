@@ -5,7 +5,7 @@ var startscreen = {
         game.stage.backgroundColor = '#000000';	  	
         game.load.image('pressstart1', 'PressStart1.png');
         game.load.image('pressstart2', 'PressStart2.png');
-
+        game.load.spritesheet('banana', 'Banana-gif-bananas-30667445-140-140_sprite.png', 140, 140);
     },
 
     create: function() {   
@@ -13,7 +13,10 @@ var startscreen = {
         background = game.add.sprite(400 - 220,400, 'pressstart1')
         this.background2 = game.add.sprite(400 - 220,400, 'pressstart2')
         game.time.events.loop(200,this.blink, this);
-
+        
+        var banim = game.add.sprite(400 - 70, 140, 'banana');
+        banim.animations.add('banana');
+        banim.animations.play('banana', 10, true);
         
         var space =             game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         space.onDown.add(this.startGame, this);
