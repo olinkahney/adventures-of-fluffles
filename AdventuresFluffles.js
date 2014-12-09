@@ -137,7 +137,6 @@ var main = {
         game.physics.arcade.enable(platform);  
         platform.body.immovable = true;
         
-<<<<<<< HEAD
         platform = game.add.sprite(1500, 300, 'platform');
         game.physics.arcade.enable(platform);  
         platform.body.immovable = true;
@@ -149,14 +148,14 @@ var main = {
         this.platforms.push(platform);
         
         
-=======
+
          platform = game.add.sprite(2000, 350, 'platform');
         game.physics.arcade.enable(platform);  
         platform.body.immovable = true;
          platform = game.add.sprite(1000, 200, 'platform');
         game.physics.arcade.enable(platform);  
         platform.body.immovable = true;
->>>>>>> FETCH_HEAD
+
         
         this.kills = 0;
         this.health = 100;
