@@ -118,14 +118,32 @@ var main = {
         game.physics.arcade.enable(platform);  
         platform.body.immovable = true;
         this.platforms.push(platform);
+        
         platform = game.add.sprite(800, 400, 'platform');
         game.physics.arcade.enable(platform);  
         platform.body.immovable = true;
         this.platforms.push(platform);
-        platform = game.add.sprite(1500, 400, 'platform');
+        
+        platform = game.add.sprite(1600, 400, 'platform');
         game.physics.arcade.enable(platform);  
         platform.body.immovable = true;
         this.platforms.push(platform);
+        
+        platform = game.add.sprite(1250, 350, 'platform');
+        game.physics.arcade.enable(platform);  
+        platform.body.immovable = true;
+        this.platforms.push(platform);
+        
+        platform = game.add.sprite(1500, 300, 'platform');
+        game.physics.arcade.enable(platform);  
+        platform.body.immovable = true;
+        this.platforms.push(platform);
+        
+        platform = game.add.sprite(1600, 150, 'platform');
+        game.physics.arcade.enable(platform);  
+        platform.body.immovable = true;
+        this.platforms.push(platform);
+        
         
         
         this.kills = 0;
@@ -246,7 +264,7 @@ var main = {
     },
     
  restartGame: function() {game.state.start('diescreen'); },
-dodamage: function(player, enemy){ this.damagedUntil= Date.now ()+1000
+dodamage: function(player, enemy){ this.damagedUntil= Date.now ()+998
     this.damaged=true; 
     if(enemy.position.x>player.x) 
     {this.player.body.velocity.x = -240;} 
