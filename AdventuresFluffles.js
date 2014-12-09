@@ -6,6 +6,7 @@ var startscreen = {
         game.load.image('pressstart1', 'PressStart1.png');
         game.load.image('pressstart2', 'PressStart2.png');
         game.load.spritesheet('banana', 'Banana-gif-bananas-30667445-140-140_sprite.png', 140, 140);
+        
     },
 
     create: function() {   
@@ -51,7 +52,7 @@ var diescreen  = {
     },
     
     startGame : function(){
-     game.state.start("main");
+     game.state.start("startscreen");
 
     },
 };
@@ -190,29 +191,50 @@ var main = {
         this.healthText = this.game.add.text(90, 20, '', { font: '20px Impact', fill: '#ffffff' }
                                             );
         
-        var up = game.input.keyboard.addKey(Phaser.Keyboard.UP);
-        up.onDown.add(this.jump, this);
+        this.toggleInput(true);
         
-        var down = game.input.keyboard.addKey(Phaser.Keyboard.DOWN);
-        down.onDown.add(this.falldown, this);
-        
-        var left = game.input.keyboard.addKey(Phaser.Keyboard.LEFT);
-        left.onDown.add(this.moveleft, this);
-        left.onUp.add(this.stopmoving, this);
-        
-        var right = game.input.keyboard.addKey(Phaser.Keyboard.RIGHT);
-        right.onDown.add(this.moveright, this);
-        right.onUp.add(this.stopmoving, this);
-        
-        var space =             game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-        space.onDown.add(this.shootBullet, this);
-        
-        var P = game.input.keyboard.addKey(Phaser.Keyboard.P);
-        P.onDown.add(this.pause, this);
+        var Pause = game.input.keyboard.addKey(Phaser.Keyboard.ESC);
+        Pause.onDown.add(this.pause, this);
     },
     
+    toggleInput:function(enable) { //enable == true or false
+        var allDownKeys = [
+            [Phaser.Keyboard.UP, this.jump],
+            [Phaser.Keyboard.DOWN, this.falldown],
+            [Phaser.Keyboard.LEFT, this.moveleft],
+            [Phaser.Keyboard.RIGHT, this.moveright],
+            [Phaser.Keyboard.SPACEBAR, this.shootBullet]
+        ];
+        
+        var allUpKeys= [
+            [Phaser.Keyboard.LEFT, this.stopmoving],
+            [Phaser.Keyboard.RIGHT, this.stopmoving]
+        ];
+        
+        if (enable == false){
+            //disable input
+            var allKeys = allDownKeys.concat(allUpKeys);
+            for(i = 0; i < allKeys.length; i++){
+                this.game.input.keyboard.removeKey(allKeys[i][0]);
+            }
+        }
+        else{
+            for(i = 0; i < allDownKeys.length; i++){
+                var Sharang = this.game.input.keyboard.addKey(allDownKeys[i][0]);
+                Sharang.onDown.add(allDownKeys[i][1], this);
+            }
+            for(i = 0; i < allUpKeys.length; i++){
+                var Sharang = this.game.input.keyboard.addKey(allUpKeys[i][0]);
+                Sharang.onUp.add(allUpKeys[i][1], this);
+            }
+        }
+        //enable input
+    },
+        
     pause:function() {
+        this.toggleInput(game.paused);
     game.paused=!game.paused;
+        
     },
     
     shootBullet: function() {
