@@ -44,7 +44,7 @@ var diescreen  = {
         game.add.sprite(400 - 344/2, 350, 'doge');
         game.add.sprite(400 - 555/2, 50, 'yousuck');
         
-        var space =             game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+        var space = game.input.keyboard.addKey(Phaser.Keyboard.ESC);
         space.onDown.add(this.startGame, this);
     
     },
@@ -55,6 +55,17 @@ var diescreen  = {
     },
 };
 
+var pausecreen  = {
+    
+    preload: function() {
+        
+        game.load.image('doge', 'doge.png');
+        
+         var pause = game.input.keyboard.addKey(Phaser.Keyboard.ESC);
+        esc.onDown.add(this.pause, this);
+    
+    },
+};
 var main = {
 
     preload: function() {
@@ -320,6 +331,7 @@ game.state.add("main", main);
 game.state.add("startscreen", startscreen);
 game.state.add("diescreen", diescreen);
 game.state.start("startscreen")
+game.state.start("pausescreen", pausescreen)
 
 //lol
 //lol
