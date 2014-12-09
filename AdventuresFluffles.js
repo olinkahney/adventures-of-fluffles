@@ -44,7 +44,7 @@ var diescreen  = {
         game.add.sprite(400 - 344/2, 350, 'doge');
         game.add.sprite(400 - 555/2, 50, 'yousuck');
         
-        var space = game.input.keyboard.addKey(Phaser.Keyboard.ESC);
+        var space = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         space.onDown.add(this.startGame, this);
     
     },
@@ -133,7 +133,11 @@ var main = {
         game.physics.arcade.enable(platform);  
         platform.body.immovable = true;
         this.platforms.push(platform);
+         platform = game.add.sprite(1000, 200, 'platform');
+        game.physics.arcade.enable(platform);  
+        platform.body.immovable = true;
         
+<<<<<<< HEAD
         platform = game.add.sprite(1500, 300, 'platform');
         game.physics.arcade.enable(platform);  
         platform.body.immovable = true;
@@ -145,6 +149,14 @@ var main = {
         this.platforms.push(platform);
         
         
+=======
+         platform = game.add.sprite(2000, 350, 'platform');
+        game.physics.arcade.enable(platform);  
+        platform.body.immovable = true;
+         platform = game.add.sprite(1000, 200, 'platform');
+        game.physics.arcade.enable(platform);  
+        platform.body.immovable = true;
+>>>>>>> FETCH_HEAD
         
         this.kills = 0;
         this.health = 100;
@@ -355,7 +367,6 @@ game.state.add("main", main);
 game.state.add("startscreen", startscreen);
 game.state.add("diescreen", diescreen);
 game.state.start("startscreen")
-game.state.start("pausescreen", pausescreen)
 
 //lol
 //lol
