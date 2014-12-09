@@ -8,7 +8,7 @@ var startscreen = {
         game.load.spritesheet('banana', 'Banana-gif-bananas-30667445-140-140_sprite.png', 140, 140);
     },
 
-    create: function() {   
+    create: function() { this.damaged=false; this.damagedUntil= 0; 
         
         background = game.add.sprite(400 - 220,400, 'pressstart1')
         this.background2 = game.add.sprite(400 - 220,400, 'pressstart2')
@@ -19,7 +19,7 @@ var startscreen = {
         banim.animations.play('banana', 10, true);
         
         var space =             game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
-        space.onDown.add(this.startGame, this);
+        space.onDown.add(this.startGame, this); 
     
     },
     blink : function(){
@@ -211,7 +211,9 @@ var main = {
     },
     
     
-    update: function() {
+    update: function() { 
+        if(this.damaged&& Date.now () > this.damagedUntil ) {
+        this.player.body.velocity.x = 0; this.damaged= false}
         this.killText.setText(this.kills + ' kills ');
         this.killText.position.x = game.camera.position.x -375
         this.healthText.position.x = game.camera.position.x -310
@@ -244,7 +246,11 @@ var main = {
     },
     
  restartGame: function() {game.state.start('diescreen'); },
-dodamage: function(player, enemy){
+dodamage: function(player, enemy){ this.damagedUntil= Date.now ()+1000
+    this.damaged=true; 
+    if(enemy.position.x>player.x) 
+    {this.player.body.velocity.x = -240;} 
+    else { this.player.body.velocity.x= 240} 
         this.health= this.health -1 
         if(this.health === 0) {this.restartGame ()}
        },
