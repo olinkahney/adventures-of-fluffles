@@ -62,13 +62,10 @@ var pausecreen  = {
         
         game.load.image('pause', 'pause.png');
         
-        },
-    };
+    },
         
     create: function () {   
         game.add.sprite(0,0, 'pause');
-         
-    };
         
          var pause = game.input.keyboard.addKey(Phaser.Keyboard.ESC);
         esc.onDown.add(this.pause, this);
@@ -146,8 +143,6 @@ var main = {
         game.physics.arcade.enable(platform);  
         platform.body.immovable = true;
         
-<<<<<<< HEAD
-=======
         platform = game.add.sprite(1500, 300, 'platform');
         game.physics.arcade.enable(platform);  
         platform.body.immovable = true;
@@ -167,8 +162,6 @@ var main = {
         game.physics.arcade.enable(platform);  
         platform.body.immovable = true;
 
-        
->>>>>>> FETCH_HEAD
         this.kills = 0;
         this.health = 100;
         this.SHOT_DELAY = 100; 
@@ -285,15 +278,11 @@ var main = {
     },
     
  restartGame: function() {game.state.start('diescreen'); },
-<<<<<<< HEAD
-dodamage: function(player, enemy){
-=======
 dodamage: function(player, enemy){ this.damagedUntil= Date.now ()+998
     this.damaged=true; 
     if(enemy.position.x>player.x) 
     {this.player.body.velocity.x = -240;} 
     else { this.player.body.velocity.x= 240} 
->>>>>>> FETCH_HEAD
         this.health= this.health -1 
         if(this.health === 0) {this.restartGame ()}
        },
