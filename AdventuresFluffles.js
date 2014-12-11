@@ -60,7 +60,8 @@ var diescreen  = {
 
 var main = {
 
-    preload: function() {
+    preload: function() { 
+        game.load.audio('boden', ['Ima_Firin_My_Lazer-Mastercard-1442368741.wav']);
         game.load.spritesheet('cat', 'cat_70x120.png', 70, 120);
         game.load.image('ground', 'ground.png');
         game.load.image('background', 'background.jpg');
@@ -73,7 +74,8 @@ var main = {
        
     },
 
-    create: function() {   
+    create: function() {  
+        this.music = game.add.audio('boden'); 
         game.physics.startSystem(Phaser.Physics.ARCADE);
         background = game.add.sprite(0,0, 'background')
         background.fixedToCamera = true
@@ -231,7 +233,8 @@ var main = {
 
     },
     
-    shootBullet: function() {
+    shootBullet: function() { 
+        this.music.play ();
         if (this.lastBulletShotAt === undefined) this.lastBulletShotAt = 0;
         if (this.game.time.now - this.lastBulletShotAt < this.SHOT_DELAY) return;
         this.lastBulletShotAt = this.game.time.now;
