@@ -71,7 +71,8 @@ var main = {
         game.load.image('giraffe', 'giraffe1.png')
         game.load.image('platform', 'platform.png')
         game.load.image('pause', 'pause.png');
-       
+//        game.load.audio('dubstep', 'dubstep.mp3');
+
     },
 
     create: function() {  
@@ -87,6 +88,11 @@ var main = {
         this.player.body.collideWorldBounds = true;
         this.player.anchor.setTo(0.5, 0);
         this.player.damagevelocity = 0;
+        
+        this.music = game.add.audio('dubstep');
+
+        this.music.play();
+
         
         game.world.setBounds(0, 0, 1920, 600);
         game.camera.follow(this.player);
@@ -152,7 +158,7 @@ var main = {
         platform.body.immovable = true;
 
         this.kills = 0;
-        this.health = 90001;
+        this.health = 100;
         this.SHOT_DELAY = 100; 
         this.BULLET_SPEED = 500; 
         this.NUMBER_OF_BULLETS = 200;
@@ -186,6 +192,10 @@ var main = {
         
         this.pauseScreen = this.game.add.sprite(0, 0, 'pause');
         this.pauseScreen.visible = false;
+        
+//        setTimeout(function(){
+//            this.restartGame()
+//        }.bind(this), 56*1000);
     },
     
     toggleInput:function(enable) { //enable == true or false
@@ -298,14 +308,18 @@ var main = {
         this.kills = this.kills+1; 
     },
     
- restartGame: function() {game.state.start('diescreen'); },
+ restartGame: function() {
+     game.state.start('diescreen');
+     
+//    this.music.stop();
+ },
 dodamage: function(player, enemy){ 
     this.damaged=true; 
     if(enemy.position.x>player.x) 
     {this.player.damagevelocity = -400;} 
     else { this.player.damagevelocity= 400} 
-        this.health= this.health -1 
-        if(this.health === 0) {this.restartGame ()}
+        this.health= this.health -15 
+        if(this.health <= 0) {this.restartGame ()}
        },
     
     
