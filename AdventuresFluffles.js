@@ -83,7 +83,8 @@ var main = {
         this.player.animations.play('asdf', 7, true);
         game.physics.arcade.enable(this.player);
         this.player.body.collideWorldBounds = true;
-        this.player.anchor.setTo(0.5, 0)
+        this.player.anchor.setTo(0.5, 0);
+        this.player.damagevelocity = 0;
         
         game.world.setBounds(0, 0, 1920, 600);
         game.camera.follow(this.player);
@@ -149,7 +150,7 @@ var main = {
         platform.body.immovable = true;
 
         this.kills = 0;
-        this.health = 100;
+        this.health = 90001;
         this.SHOT_DELAY = 100; 
         this.BULLET_SPEED = 500; 
         this.NUMBER_OF_BULLETS = 200;
@@ -261,6 +262,8 @@ var main = {
     
     
     update: function() {
+        this.player.damagevelocity = this.player.damagevelocity * 0.95;
+        this.player.position.x = this.player.position.x + this.player.damagevelocity * 0.01;
         this.killText.setText(this.kills + ' kills ');
         this.killText.position.x = game.camera.position.x -375
         this.healthText.position.x = game.camera.position.x -310
@@ -293,11 +296,11 @@ var main = {
     },
     
  restartGame: function() {game.state.start('diescreen'); },
-dodamage: function(player, enemy){ this.damagedUntil= Date.now ()+1000
+dodamage: function(player, enemy){ 
     this.damaged=true; 
     if(enemy.position.x>player.x) 
-    {this.player.body.velocity.x = -240;} 
-    else { this.player.body.velocity.x= 240} 
+    {this.player.damagevelocity = -400;} 
+    else { this.player.damagevelocity= 400} 
         this.health= this.health -1 
         if(this.health === 0) {this.restartGame ()}
        },
