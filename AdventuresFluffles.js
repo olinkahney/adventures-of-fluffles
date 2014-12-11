@@ -180,6 +180,9 @@ var main = {
         
         var Pause = game.input.keyboard.addKey(Phaser.Keyboard.ESC);
         Pause.onDown.add(this.pause, this);
+        
+        this.pauseScreen = this.game.add.sprite(0, 0, 'pause');
+        this.pauseScreen.visible = false;
     },
     
     toggleInput:function(enable) { //enable == true or false
@@ -191,7 +194,7 @@ var main = {
             [Phaser.Keyboard.SPACEBAR, this.shootBullet]
         ];
         
-        var allUpKeys= [
+        var allUpKeys = [
             [Phaser.Keyboard.LEFT, this.stopmoving],
             [Phaser.Keyboard.RIGHT, this.stopmoving]
         ];
@@ -216,10 +219,15 @@ var main = {
         //enable input
     },
         
-    pause:function() {
+    pause : function() {
         this.toggleInput(game.paused);
-    game.paused=!game.paused;
+        game.paused=!game.paused;
         
+        this.pauseScreen.visible = !this.pauseScreen.visible;
+        
+        this.pauseScreen.position.x = game.camera.position.x - 400;
+        this.pauseScreen.position.y = game.camera.position.y - 300;
+
     },
     
     shootBullet: function() {
