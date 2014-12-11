@@ -57,22 +57,7 @@ var diescreen  = {
     },
 };
 
-var pausecreen  = {
-    
-    preload: function() {
-        
-        game.load.image('pause', 'pause.png');
-        
-    },
-        
-    create: function () {   
-        game.add.sprite(0,0, 'pause');
-        
-         var pause = game.input.keyboard.addKey(Phaser.Keyboard.ESC);
-        esc.onDown.add(this.pause, this);
-    
-    },
-};
+
 var main = {
 
     preload: function() {
@@ -84,6 +69,8 @@ var main = {
         game.load.image('explosion', 'explosion.gif')
         game.load.image('giraffe', 'giraffe1.png')
         game.load.image('platform', 'platform.png')
+        game.load.image('pause', 'pause.png');
+       
     },
 
     create: function() {   
